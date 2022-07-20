@@ -1,11 +1,12 @@
 import os
 
 continuar = True;
-soma = 0;
 
 os.system('cls');
 
 while(continuar):
+    soma = 0;
+
     print("-------------------------------");
     print("         VAREJOS S/A           ");
     print("   Código GTIN-13/UPC/EAN-13   ");
@@ -32,28 +33,28 @@ while(continuar):
             print("Número GTIN-13 não possui 13 digitos!");
             input("Pressione ENTER para continuar...");
             os.system('cls');
-
-        else:
-            codigo13 = int(codigo13);
-
-            # Repetição para multiplicar os números por 3(três)
-            for dig in range(codigo13[1], codigo13[11], 2):
-                soma += (codigo13[dig] * 3);
-
-            # Repetição para multiplicar os números por 1(um)
-            for dig in range(codigo13[0], codigo13[10], 2):
-                soma += (codigo13[dig] * 1);
+        
+        else:            
+            for i in range(0, 12, 2):
+                aux1 = int(codigo13[i]) * 1;
+                aux2 = int(codigo13[i+1]) * 3;                
+                soma += aux1 + aux2;
 
             divisao = soma // 10;
-            divisao += 1; #divisao = divisao + 1
-            divisao *= 10; #divisao = divisao * 10
+            divisao += 1;           #divisao = divisao + 1            
+            divisao *= 10;          #divisao = divisao * 10
             digVerificador = divisao - soma;
 
             if(digVerificador % 10 == 0):
                 digVerificador = 0;
-
+            
             print("DIGITO VERIFICADOR: ", digVerificador);
-            print("NÚMERO GTIN-13 VÁLIDO!");
+
+            if(digVerificador == int(codigo13[12])):
+                print("NÚMERO GTIN-13 VÁLIDO!");
+            else:
+                print("NÚMERO GTIN-13 INVÁLIDO!");
+
             print("-----------------------------");
             input("Pressione ENTER para continuar...");
             os.system('cls');
