@@ -7,11 +7,9 @@ def InformarPais(cod):
     elif(cod == "779"):
         pais_loc = "Argentina";
         
-
     elif(cod == "773"):
         pais_loc = "Uruguai";
         
-
     elif(cod == "780"):
         pais_loc = "Chile";       
 
@@ -32,7 +30,7 @@ def InformarPais(cod):
         
     else:
         pais_loc = "VAREJOS S/A não vende para este país: ";        
-    
+            
     return pais_loc;
 
 def Titulo():
@@ -74,13 +72,17 @@ while(continuar):
         
         else:
             for i in range(0, 12, 2):
-                aux1 += int(codigo13[i]) * 1;
-                aux2 += int(codigo13[i+1]) * 3;
-                soma += aux1 + aux2;
-
+                aux1 += (int(codigo13[i]) * 1);
+                aux2 += (int(codigo13[i+1]) * 3);
+                
+            soma += aux1 + aux2;
+            print(soma);
             divisao = soma // 10;
-            divisao += 1;           #divisao = divisao + 1            
-            divisao *= 10;          #divisao = divisao * 10
+            print(divisao);
+            divisao += 1;
+            print(divisao);
+            divisao *= 10;
+            print(divisao);
             digVerificador = divisao - soma;
 
             if(digVerificador % 10 == 0):
@@ -117,6 +119,7 @@ while(continuar):
             else:
                 print(pais, codPais);
                 input("Pressione ENTER para continuar...");
+            os.system('cls')
     
 # Código da opção 3
     elif(op == 3):
